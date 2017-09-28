@@ -43,7 +43,7 @@ function refineimg(){
     
     //営業判定
     var nowtime = new Date();
-    var nownum = nowtime.getHours()*100+nowtime.getMinutes()-300;
+    var nownum = nowtime.getHours()*100+nowtime.getMinutes();
     var openflug;
 
 
@@ -57,7 +57,7 @@ function refineimg(){
     
     db.transaction(
          function(tr){
-             tr.executeSql("SELECT * FROM TestTable WHERE opentime < ? AND ? < endtime OR endtime='null' ",[nownum,nownum],function(rt,rs){
+             tr.executeSql("SELECT * FROM TestTable WHERE( opentime < ? AND ? < endtime OR endtime='null'OR ? < opentime) AND (slope = 'false' or slope = ?)",[nownum,nownum,openflug,slopeflug],function(rt,rs){
                  var l= rs.rows.length;
         
                  for(var i=0;i<l;i++){
