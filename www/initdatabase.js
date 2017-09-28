@@ -21,7 +21,7 @@ function initdb(){
     
     db.transaction(
          function(tr){
-             tr.executeSql('CREATE TABLE IF NOT EXISTS TestTable (id unique, title ,info,mapx,mapy,opentime,endtime,time,season,slope,imageurl)');
+             tr.executeSql('CREATE TABLE IF NOT EXISTS TestTable (id unique, title ,info,mapx,mapy,opentime INTEGER,endtime INTEGER,time,season,slope,imageurl)');
               
               for(var i = 0;i<datalen;i++){
                tr.executeSql('INSERT INTO TestTable VALUES(?,?,?,?,?,?,?,?,?,?,?)',[i,titles[i],informations[i],mapxs[i],mapys[i],opentimes[i],endtimes[i],times[i],seasons[i],slopes[i],imageurls[i]]);
