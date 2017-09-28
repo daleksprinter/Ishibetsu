@@ -1,0 +1,18 @@
+<ons-page id = page1>
+    <ons-toolbar>
+        <div class="center">石別マップ</div>
+        <div class="right" style="line-height: 44px">
+        <ons-button id="refine" modifier="quiet" onclick="myNavigator.pushPage('homesetting.html')">絞り込み</ons-button>
+        </div>
+    </ons-toolbar>
+        <br>
+        <div id = photo class=photos> </div>
+        
+        <br>
+        <ons-button onclick="myNavigator.pushPage('databaseadmin.html')" modifier="light">データベース管理</ons-button>
+        
+        <br>
+        <ons-button id = corseselect modifier="light" onclick="corseslc()">コース選択</ons-button>
+        <div id =  root></div>
+    </ons-page>
+

@@ -1,0 +1,48 @@
+<ons-page>
+    <ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">データベース管理</div>
+    </ons-toolbar>
+     
+  <img id = 'viewgetphoto' width=150 height=150><br>
+  
+   
+   
+        <ons-button id= 'snppht' onclick='snapphoto()' modifier='light'>SnapImage</ons-button><br>
+         <ons-button id= 'gtpht' onclick='getphoto()' modifier='light'>GetImage</ons-button><br>
+         <br>
+         
+        <p>Enter Spot Data</p>
+
+  <p>Title<p>
+ <input type = 'text' id = 'datatitle'>
+  <p>Information<p>
+ <input type = 'text' id = 'datainfo'>
+  <p>Latitude<p>
+ <input type = 'text' id = 'datamapx'>
+  <p>Longitude<p>
+ <input type = 'text' id = 'datamapy'>
+ 
+ <p>Get Current Location</p>
+ <ons-button id = getcurrentloc modifier="light">Get Location</ons-button>
+ <br><br>
+  <p>Open Time<p>
+ <input type = 'text' id = 'dataopentime'>
+  <p>End Time<p>
+ <input type = 'text' id = 'dataendtime'>
+  <p>Photo Time<p>
+ <input type = 'text' id = 'datatime'>
+  <p>Photo Season<p>
+ <input type = 'text' id = 'dataseason'>
+  <p>Slope<p>
+ <input type = 'checkbox' id = 'dataslope'>
+  
+ <br>
+ <br>
+ 
+       <ons-button modifier="light" onclick="insert()">InsertData</ons-button><br><br>
+       <ons-button modifier="light" onclick="init()">DeleteTable</ons-button>
+    
+        
+</ons-page>
+

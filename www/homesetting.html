@@ -1,0 +1,44 @@
+<ons-page id=homesettings>
+<ons-toolbar>
+    <div class="center">表示設定</div>
+    <div class="left"><ons-button modifier="quiet" onclick="refineimg()">Apply</ons-button></div>
+  </ons-toolbar>
+
+  <ons-list>
+ 
+    <ons-list-item>
+      <div class="center">
+       現在営業時間外のお店を表示
+      </div>
+      <div class="right">
+        <ons-switch checked var='open' ></ons-switch>
+      </div>
+    </ons-list-item>
+    <ons-list-item>
+      <div class="center">
+        坂を登る場所を表示
+      </div>
+      <div class="right">
+        <ons-switch  checked var='onslope'></ons-switch>
+      </div>
+    </ons-list-item>
+     <ons-list-item>
+      <div class="center">
+      季節、時間が異なる写真を表示
+      </div>
+      <div class="left">
+        <ons-switch  checked var='season'></ons-switch>
+      </div>
+    </ons-list-item>
+    
+      <ons-list-item>
+      <div class="center">
+       お気に入りのみ表示
+      </div>
+      <div class="right">
+        <ons-switch var='fav'></ons-switch>
+      </div>
+    </ons-list-item>
+  </ons-list>
+
+</ons-page>
