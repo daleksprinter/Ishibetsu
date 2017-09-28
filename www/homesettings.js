@@ -32,32 +32,50 @@ function refineimg(){
     var db = openDatabase("database", "1.0", "testdatabase", 1000000);
     deleteview(photo);
     
-    //坂判定
-    var slopeflug;
-    if(onslope.isChecked()){
-        slopeflug = 'false';
-    }else{
-        slopeflug = 'true';
-    }
-    
-    
-    //営業判定
     var nowtime = new Date();
     var nownum = nowtime.getHours()*100+nowtime.getMinutes();
-    var openflug;
-
-
-  if(open.isChecked()){
-      openflug = nowtime;
-  }else{
-      openflug = 0;
-  }
-   
-   console.log(nownum);
     
+    function flug(id){
+        if(id.isChecked()){
+            return '0';
+        }else{
+            return '1';
+        }
+    }
+
+   
+   //季節判定
+   var time ;
+   var season;
+   
+   if(  nowtime.getHours() <= 6 || 18 <= nowtime.getHours() ){
+       time = 'night';
+   }else{
+       time = 'noon';
+   }
+   
+   if( nowtime.getMonth()+1 <= 3){
+       season = 'wint'
+   }
+   if(3 > nowtime.getMonth+1 <= 5){
+       season = 'spr'
+   }
+   if(5<nowtime.getMonth+1 <= 8){
+       season = 'sum'
+   }
+   if(9<nowtime.getMonth+1 <=11){
+       season = 'fall'
+   }
+   else{
+       season = 'wint'
+   }
+
+
+   
     db.transaction(
          function(tr){
-             tr.executeSql("SELECT * FROM TestTable WHERE( opentime < ? AND ? < endtime OR endtime='null'OR ? < opentime) AND (slope = 'false' or slope = ?)",[nownum,nownum,openflug,slopeflug],function(rt,rs){
+             tr.executeSql("SELECT * FROM TestTable WHERE ( opentime < ? AND ? < endtime OR endtime='null'OR '1'=?) AND ('1'=? OR slope = 'false') AND ('1'=? OR (season = ? AND time = ?) )",
+                                                                  [nownum,nownum,flug(open),flug(onslope),flug(seasonbtn),season,time],function(rt,rs){
                  var l= rs.rows.length;
         
                  for(var i=0;i<l;i++){
