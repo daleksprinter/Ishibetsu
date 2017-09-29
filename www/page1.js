@@ -2,7 +2,7 @@ document.addEventListener('pageinit',function(page){
 if(page.target.id == "page1"){
     initdb();
     viewthumbs();
-　 } 
+  　 } 
  }
 );
 
@@ -28,7 +28,11 @@ function loaddb(id){
     db.transaction(
         function(tr){
             tr.executeSql("SELECT * FROM TestTable",[],function(rt,rs){
-                  viewimg(information,rs.rows.item(id).imageurl,300,300);
+                img=viewimg(rs.rows.item(id).imageurl,300,300);
+                img.setAttribute('class','phototag');
+                
+                  information.appendChild(img);
+                  console.log(img);
                   viewtext(information,rs.rows.item(id).title);
                   viewtext(information,rs.rows.item(id).info);
                   lati=rs.rows.item(id).mapx;
@@ -45,12 +49,14 @@ function viewtext(id,text){
      id.appendChild(item);
 }
 
-function viewimg(id,imgurl,width,height){
+function viewimg(imgurl,width,height){
     var img = document.createElement("img");
+ 
     img.src=imgurl;
     img.width = width;
     img.height = height;
-    id.appendChild(img);
+   return img;
+    
     
 }
 

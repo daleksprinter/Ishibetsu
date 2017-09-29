@@ -1,11 +1,11 @@
-var chklist = new Array();
+var chklist;
 var listcount;
 
 var findUl;
 var findLi; 
 
 function corseslc(){
-    
+    chklist = new Array();
     listcount=photo.childElementCount;
 　　corseselect.textContent = "キャンセル";
 　　corseselect.setAttribute('onclick','cancel()');

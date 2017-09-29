@@ -25,7 +25,7 @@ function getphoto(){
        
               var image = document.getElementById ('viewgetphoto');
                 image.src = "data:image/jpeg;base64," + imageData;
-             console.log(image.src);
+          
         }
 
         //A callback function when snapping picture is fail.

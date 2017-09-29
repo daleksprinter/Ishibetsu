@@ -9,7 +9,9 @@ function viewthumbs(){
                     var button=createbutton(i,"loadpage(this)","light");
         
                     //loadImage
-                     var img = viewimg(button,rs.rows.item(i).imageurl,100,100);
+                     var img = viewimg(rs.rows.item(i).imageurl,100,100);
+                     
+                     button.appendChild(img);
                      
                      //setComponent
                      photo.appendChild(button);
@@ -74,7 +76,7 @@ function refineimg(){
    
     db.transaction(
          function(tr){
-             tr.executeSql("SELECT * FROM TestTable WHERE ( opentime < ? AND ? < endtime OR endtime='null'OR '1'=?) AND ('1'=? OR slope = 'false') AND ('1'=? OR (season = ? AND time = ?) )",
+             tr.executeSql("SELECT * FROM TestTable WHERE ( ( (opentime < ? AND ? < endtime ) OR  endtime='null' ) OR '1'=? ) AND ('1'=? OR slope = 'false') AND ('1'=? OR (season = ? AND time = ?) )",
                                                                   [nownum,nownum,flug(open),flug(onslope),flug(seasonbtn),season,time],function(rt,rs){
                  var l= rs.rows.length;
         
@@ -91,10 +93,12 @@ function refineimg(){
                  }
              });
          });
+         
+          myNavigator.popPage();
 }
 
 function deleteview(id){
 //速度低下のリスク
  id.textContent = null;  
- myNavigator.popPage();
+
 }
