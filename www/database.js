@@ -1,3 +1,4 @@
+var imagebase64;
 function snapphoto(){
         
         navigator.camera.getPicture (onSuccess, onFail, 
@@ -6,8 +7,9 @@ function snapphoto(){
         function onSuccess (imageData) {
        
               var image = document.getElementById ('viewgetphoto');
-                image.src = "data:image/jpeg;base64," + imageData;
-            console.log(image.src);
+            image.src = "data:image/jpeg;base64," + imageData;
+         imagebase64 = image.src;
+       document.getElementById(imagestr).textContent=imagebase64;
         }
 
         //A callback function when snapping picture is fail.
@@ -25,6 +27,8 @@ function getphoto(){
        
               var image = document.getElementById ('viewgetphoto');
                 image.src = "data:image/jpeg;base64," + imageData;
+                  imagebase64 = image.src;
+                  document.getElementById(imagestr).textContent=imagebase64;
           
         }
 
@@ -40,19 +44,19 @@ function insert(){
    
      var db = openDatabase("database", "1.0", "testdatabase", 1000000);
          
-     var no = document.getElementById("id").value;
-     var title = document.getElementById("title").value;
-     var info = document.getElementById("info").value;
-     var imageurl = document.getElementById("imageurl").value;
+    
+     var title = document.getElementById("datatitle").value;
+     var info = document.getElementById("datainfo").value;
+  
  
      db.transaction(
          function(tr){
-           tr.executeSql('CREATE TABLE IF NOT EXISTS TestTable (id unique, title ,info,mapx,mapy,opentime,endtime,time,season,slope,imageurl)');
-           tr.executeSql('INSERT INTO TestTable VALUES(?,?,?,?,?,?,?,?,?,?)',[no,title,info,imageurl,"","","","","",""]);
+           tr.executeSql('INSERT INTO TestTable VALUES(?,?,?,?,?,?,?,?,?,?)',[title,info,"","","","","","","",imagebase64] );
+              
          }
-     );
-    
+         );
 }
+  
 
 function init(){
     

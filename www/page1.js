@@ -32,12 +32,10 @@ function loaddb(id){
                 img.setAttribute('class','phototag');
                 
                   information.appendChild(img);
-                  console.log(img);
                   viewtext(information,rs.rows.item(id).title);
                   viewtext(information,rs.rows.item(id).info);
                   lati=rs.rows.item(id).mapx;
                   long=rs.rows.item(id).mapy;
-                  console.log(lati+","+long);
                 }
             );
          }

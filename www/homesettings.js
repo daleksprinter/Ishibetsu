@@ -34,45 +34,10 @@ function refineimg(){
     var db = openDatabase("database", "1.0", "testdatabase", 1000000);
     deleteview(photo);
     
-    var nowtime = new Date();
-    var nownum = nowtime.getHours()*100+nowtime.getMinutes();
-    
-    function flug(id){
-        if(id.isChecked()){
-            return '0';
-        }else{
-            return '1';
-        }
-    }
-
-   
-   //季節判定
-   var time ;
-   var season;
-   
-   if(  nowtime.getHours() <= 6 || 18 <= nowtime.getHours() ){
-       time = 'night';
-   }else{
-       time = 'noon';
-   }
-   
-   if( nowtime.getMonth()+1 <= 3){
-       season = 'wint'
-   }
-   if(3 > nowtime.getMonth+1 <= 5){
-       season = 'spr'
-   }
-   if(5<nowtime.getMonth+1 <= 8){
-       season = 'sum'
-   }
-   if(9<nowtime.getMonth+1 <=11){
-       season = 'fall'
-   }
-   else{
-       season = 'wint'
-   }
-
-
+    var now = new Date();
+    var nownum = now.getHours()*100+now.getMinutes();
+    var time   = gettime(now);
+    var season = getseason(now);
    
     db.transaction(
          function(tr){
@@ -85,8 +50,8 @@ function refineimg(){
                     var button=createbutton(i,"loadpage(this)","light");
         
                     //loadImage
-                     var img = viewimg(button,rs.rows.item(i).imageurl,100,100);
-                     
+                     var img = viewimg(rs.rows.item(i).imageurl,100,100);
+                      button.appendChild(img);
                      //setComponent
                      photo.appendChild(button);
                      ons.compile(button);
@@ -98,7 +63,42 @@ function refineimg(){
 }
 
 function deleteview(id){
-//速度低下のリスク
- id.textContent = null;  
+//速度低下
+       id.textContent = null;  
 
+}
+
+function flug(id){
+        if(id.isChecked()){
+            return '0';
+        }else{
+            return '1';
+        }
+    }
+
+function getseason(nowtime){
+    
+   if( nowtime.getMonth()+1 <= 3){
+       return 'wint'
+   }
+   if(3 > nowtime.getMonth+1 <= 5){
+       return 'spr'
+   }
+   if(5<nowtime.getMonth+1 <= 8){
+       return 'sum'
+   }
+   if(9<nowtime.getMonth+1 <=11){
+       return 'fall'
+   }
+   else{
+       return 'wint'
+   }
+}
+
+function gettime(nowtime){
+      if(  nowtime.getHours() <= 6 || 18 <= nowtime.getHours() ){
+       return 'night';
+   }else{
+        return 'noon';
+   }
 }
