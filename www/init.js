@@ -1,0 +1,76 @@
+function load_database(){
+    
+   delete_table();
+    //スポットデータの読み込み
+   $.ajax({
+        type:"GET",
+        url:"http://test1492.php.xdomain.jp/getspot.php",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success:function(data,dataType){
+　　　　  var l = data.length;
+　　　  　for(var i = 0; i < l;i++){
+　　　　 　　 insertSpot(data[i].id,data[i].title,data[i].info,data[i].time,data[i].season,data[i].imagedata,data[i].tagid);
+　　　  　}
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+           alert('Error : ' + errorThrown);
+           $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
+           $("#textStatus").html("textStatus : " + textStatus);
+           $("#errorThrown").html("errorThrown : " + errorThrown);
+      }
+    });
+    
+    //タグデータの読み込み
+    $.ajax({
+        type:"GET",
+        url:"http://test1492.php.xdomain.jp/gettag.php",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success:function(data,dataType){
+　　　　  var l = data.length;
+　　　  　for(var i = 0; i < l;i++){
+　　　　 　　 insertTag(data[i].id,data[i].name,data[i].latitude,data[i].longitude,data[i].opentime,data[i].endtime,data[i].slope);　    
+　　　  
+　　　  　}
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+           alert('Error : ' + errorThrown);
+           $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
+           $("#textStatus").html("textStatus : " + textStatus);
+           $("#errorThrown").html("errorThrown : " + errorThrown);
+      }
+    })
+    
+}
+function insertSpot(id,title,info,time,season,imagedata,tagid){
+     var db = openDatabase("database", "1.0", "testdatabase", 1000000);
+     db.transaction(
+         function(tr){
+          tr.executeSql('CREATE TABLE IF NOT EXISTS Spot (id unique,title,info,time,season,imagedata,tagid INTEGER)');
+          tr.executeSql("INSERT INTO Spot VALUES(?,?,?,?,?,?,?)",[id,title,info,time,season,imagedata,tagid]);
+        }
+     );
+}
+function insertTag(id,name,latitude,longitude,opentime,endtime,slope){
+    var db = openDatabase("database", "1.0", "testdatabase", 1000000);
+     db.transaction(
+         function(tr){
+          tr.executeSql('CREATE TABLE IF NOT EXISTS Tag (id unique,name,latitude,longitude,opentime INTEGER,endtime INTEGER,slope)');
+          tr.executeSql("INSERT INTO Tag VALUES(?,?,?,?,?,?,?)",[id,name,latitude,longitude,opentime,endtime,slope]);
+        }
+     );
+}
+
+function delete_table(){
+    
+    var db = openDatabase("database", "1.0", "testdatabase", 1000000);
+    
+    db.transaction(
+        function(tr){
+            tr.executeSql('DROP TABLE IF EXISTS Spot');
+            tr.executeSql('DROP TABLE IF EXISTS Tag');
+            
+        }
+    );
+}
