@@ -4,11 +4,11 @@ function refine_thumbnail(){
     var db = openDatabase("database", "1.0", "testdatabase", 1000000);
      db.transaction(
          function(tr){
-             tr.executeSql("SELECT Spot.id,Spot.imagedata FROM Spot INNER JOIN Tag ON Spot.tagid = Tag.id WHERE (((Tag.opentime < ? AND ? < Tag.endtime) OR Tag.endtime is null) OR 1= ?) AND (1 = ? OR Tag.slope = 'false') AND (1 = ? OR (Spot.time = ? AND Spot.season = ? ))",[time,time,flug(open),flug(slope),flug(season),get_timezone(date.getHours()),get_season(date.getMonth()+1)],function(rt,rs){
+             tr.executeSql("SELECT Spot.id,Spot.imagedata FROM Spot INNER JOIN Tag ON Spot.tagid = Tag.id WHERE (((((Tag.opentime < ? AND ? < Tag.endtime) OR Tag.endtime is null) OR 1= ?) AND (1 = ? OR Tag.slope = 'false') AND (1 = ? OR (Spot.time = ? AND Spot.season = ? ))) AND 1 = ?) OR Spot.favorite = 'true' ",[time,time,flug(open),flug(slope),flug(season),get_timezone(date.getHours()),get_season(date.getMonth()+1),flug(favorite)],function(rt,rs){
                var l = rs.rows.length;
                 $("#photo").empty();
                 for(var i=0;i<l;i++){
-                  $("#photo")[0].appendChild( create_thumbnail(rs.rows.item(i).id,rs.rows.item(i).imagedata,96,96) );
+                  $("#photo")[0].appendChild( create_thumbnail(rs.rows.item(i).id,rs.rows.item(i).imagedata,94,94) );
                  }
                myNavigator.popPage();
              });

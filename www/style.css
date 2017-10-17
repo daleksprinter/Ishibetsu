@@ -32,3 +32,38 @@ background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4
 background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
 transition: .4s;
 }
+
+.carousel  {
+    position:absolute;
+    top:450px;
+    height: 130px;
+    margin: 10px 0;
+     box-shadow:5px 5px 10px;
+     border:1px solid #000;
+}
+
+ons-carousel-item {
+    background: #eeeeee;
+}
+#rootmap{
+    width: 375px;
+    height: 450px;
+}
+
+.txt{
+     position:absolute;
+    top: 0px;
+    left :200px;
+    
+  
+}
+.button1{
+   text-align:center;
+}
+.view{
+    -webkit-filter: drop-shadow(10px 10px 5px rgba(0,0,0,0.5));
+    -moz-filter: drop-shadow(10px 10px 5px rgba(0,0,0,0.5));
+    -o-filter: drop-shadow(10px 10px 5px rgba(0,0,0,0.5));
+    -ms-filter: drop-shadow(10px 10px 5px rgba(0,0,0,0.5));
+    filter: drop-shadow(10px 10px 5px rgba(0,0,0,0.5));
+}

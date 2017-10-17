@@ -21,6 +21,7 @@ document.addEventListener('pageinit',function(page){
     img.src = data.imagedata;
     img.width = 300;
     img.height = 300;
+    img.setAttribute('class','view');
     
     //テキスト表示
     $("#title")[0].textContent = data.title;
@@ -39,4 +40,34 @@ document.addEventListener('pageinit',function(page){
    } 
 });
 
+function check_fav(){
+    /*
+    if(data.favorite == 'true'){
+        console.log('true');
+     var db = openDatabase("database", "1.0", "testdatabase", 1000000);
+     db.transaction(
+         function(tr){
+             tr.executeSql("update Spot set favorite = 'false' where id=?",[data.id],
+             function(rt,rs){
+               console.log('お気に入りを解除しました');
+               $("#fav")[0].textContent = 'お気に入り登録';
+             },function(err){
+                 console.log('error');
+             }
+             );
+     });
+     
+    }else if(data.favorite == 'false'){
+        console.log('false');
+        db.transaction(
+         function(tr){
+             tr.executeSql("update Spot set season = 'true'",[],callback);
+       });
+       
+    }*/
+}
+
+function callback(){
+    console.log('suc');
+}
 

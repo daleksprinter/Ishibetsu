@@ -8,7 +8,7 @@ document.addEventListener('pageinit',function(page){
                  var l= rs.rows.length;
                  for(var i=0;i<l;i++){
                   //作ったサムネイル要素を追加
-                  $("#photo")[0].appendChild( create_thumbnail(rs.rows.item(i).id,rs.rows.item(i).imagedata,96,96) );
+                  $("#photo")[0].appendChild( create_thumbnail(rs.rows.item(i).id,rs.rows.item(i).imagedata,94,94) );
                  }
              });
      });  
@@ -17,18 +17,20 @@ document.addEventListener('pageinit',function(page){
 
 
 function create_thumbnail(id,src,width,height){
-    //画像要素を作成
-    var thumb = document.createElement('img');
-    thumb.src = src;
-    thumb.width = width;
-    thumb.height = height;
-    
     //ボタン要素を作成
     var button = document.createElement('button');
     button.setAttribute('id',id);
     button.setAttribute('class', 'unselected');
     button.setAttribute('onclick','load_detail(this.id)');
-    button.appendChild(thumb);
+    button.appendChild(img(src,width,height));
     return button;
 }
    
+     
+function img(src,width,height){  
+    var image = document.createElement('img');
+    image.src = src;
+    image.width = width;
+    image.height = height;
+    return image;
+}

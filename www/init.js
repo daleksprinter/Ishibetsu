@@ -8,9 +8,10 @@ function load_database(){
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success:function(data,dataType){
+          
 　　　　  var l = data.length;
 　　　  　for(var i = 0; i < l;i++){
-　　　　 　　 insertSpot(data[i].id,data[i].title,data[i].info,data[i].time,data[i].season,data[i].imagedata,data[i].tagid);
+　　　　 　　 insertSpot(data[i].id ,data[i].title ,data[i].info ,data[i].time ,data[i].season ,data[i].imagedata ,data[i].tagid);
 　　　  　}
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -28,9 +29,10 @@ function load_database(){
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success:function(data,dataType){
+        
 　　　　  var l = data.length;
 　　　  　for(var i = 0; i < l;i++){
-　　　　 　　 insertTag(data[i].id,data[i].name,data[i].latitude,data[i].longitude,data[i].opentime,data[i].endtime,data[i].slope);　    
+　　　　 　　 insertTag(data[i].id ,data[i].name,data[i].latitude,data[i].longitude,data[i].opentime,data[i].endtime,data[i].slope);　    
 　　　  
 　　　  　}
         },
@@ -43,12 +45,15 @@ function load_database(){
     })
     
 }
+
 function insertSpot(id,title,info,time,season,imagedata,tagid){
      var db = openDatabase("database", "1.0", "testdatabase", 1000000);
      db.transaction(
          function(tr){
-          tr.executeSql('CREATE TABLE IF NOT EXISTS Spot (id unique,title,info,time,season,imagedata,tagid INTEGER)');
-          tr.executeSql("INSERT INTO Spot VALUES(?,?,?,?,?,?,?)",[id,title,info,time,season,imagedata,tagid]);
+          tr.executeSql('CREATE TABLE IF NOT EXISTS Spot (id PRIMARY KEY,title,info,time,season,imagedata,favorite,tagid INTEGER)',[],function(){
+          });
+          tr.executeSql("INSERT INTO Spot VALUES(?,?,?,?,?,?,'false',?)",[id,title,info,time,season,imagedata,tagid],function(rt,rs){
+          });
         }
      );
 }
@@ -56,7 +61,8 @@ function insertTag(id,name,latitude,longitude,opentime,endtime,slope){
     var db = openDatabase("database", "1.0", "testdatabase", 1000000);
      db.transaction(
          function(tr){
-          tr.executeSql('CREATE TABLE IF NOT EXISTS Tag (id unique,name,latitude,longitude,opentime INTEGER,endtime INTEGER,slope)');
+          tr.executeSql('CREATE TABLE IF NOT EXISTS Tag (id PRIMARY KEY,name,latitude,longitude,opentime INTEGER,endtime INTEGER,slope)',[],function(){
+          });
           tr.executeSql("INSERT INTO Tag VALUES(?,?,?,?,?,?,?)",[id,name,latitude,longitude,opentime,endtime,slope]);
         }
      );
