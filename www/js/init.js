@@ -32,18 +32,20 @@ function load_database(){
         async: false,
         success:function(data,dataType){
         
-　　　　  var l = data.length;
-　　　  　for(var i = 0; i < l;i++){
-　　　　 　　 insertTag(data[i].id ,data[i].name,data[i].latitude,data[i].longitude,data[i].opentime,data[i].endtime,data[i].slope);　    
-　　　  
-　　　  　}
+　　　　   var l = data.length;
+　　　   　for(var i = 0; i < l;i++){
+　　　　 　　 insertTag(data[i].id ,data[i].name,data[i].latitude,data[i].longitude,data[i].opentime,data[i].endtime,data[i].slope);
+　　　   　}
+          localStorage.setItem('loaddata','true');
+          console.log('loaded');
+          myNavigator.pushPage('phostone/home.html');
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
            alert('Error : ' + errorThrown);
            $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
            $("#textStatus").html("textStatus : " + textStatus);
            $("#errorThrown").html("errorThrown : " + errorThrown);
-      }
+        }
     })
     
 }
@@ -72,7 +74,7 @@ function insertTag(id,name,latitude,longitude,opentime,endtime,slope){
 }
 
 function delete_table(){
-    
+    localStorage.removeItem('loaddata');
     var db = openDatabase("database", "1.0", "testdatabase", 1000000);
     
     db.transaction(

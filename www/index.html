@@ -23,7 +23,13 @@
     <script>
    
     document.addEventListener('deviceready', function() {
-     //load_database();
+     if(localStorage.getItem('loaddata')=='true'){
+        console.log('not load');
+        myNavigator.pushPage('phostone/home.html');
+     }
+     else{
+        load_database();
+     }
     }, false);
 
     // Onsen UIを使用している場合
@@ -34,6 +40,6 @@
     </script>
 </head>
 <body>
-   <ons-navigator swipeable="force" animation = 'slide' var="myNavigator" page="phostone/home.html"></ons-navigator> 
+   <ons-navigator swipeable="force" animation = 'slide' var="myNavigator" ></ons-navigator> 
 </body>
 </html>
