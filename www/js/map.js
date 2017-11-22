@@ -71,6 +71,7 @@ function done(){
  $('#photo').find('ons-icon').remove();
  $('#icon').attr('icon','map-marker');
      $('#spot').attr('onClick','spot_select()');
+     $('#cancel')[0].style.display="none";
 
     /*
         for(var i = 0; i<findli_child;i++){
@@ -95,6 +96,7 @@ function cancel(){
      $('#photo').find('ons-icon').remove();
      $('#icon').attr('icon','map-marker');
      $('#spot').attr('onClick','spot_select()');
+     $('#cancel')[0].style.display="none";
 
 }
 
