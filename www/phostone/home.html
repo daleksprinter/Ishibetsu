@@ -1,12 +1,15 @@
 <ons-page id = home>
     <ons-toolbar>
+        <div class="left">
+        <ons-button id = "cancel" style="display: none;" onclick = "cancel()">キャンセル</ons-button>
+        </div>
         <div class="center">Phostone</div>
         <div class="right" style="line-height: 44px">
         <ons-button id = 'refine' modifier="quiet" onclick="myNavigator.pushPage('phostone/setting.html')">絞り込み</ons-button>
         </div>
     </ons-toolbar>
 
-     
+
 <div id = herophoto>
   <div class='herotitle'>
     <h1>石別へようこそ。</h1>
@@ -24,6 +27,4 @@
            -->
         </div>
         <ons-button id = "done" style="display: none;" onclick = "done()">決定</ons-button>
-        <ons-button id = "cancel" style="display: none;" onclick = "cancel()">キャンセル</ons-button>
 </ons-page>
-
