@@ -42,9 +42,30 @@ function create_thumbnail(id,src,width,height){
 
 function img(src,width,height){  
     var image = document.createElement('img');
+    var fh = height;
+    var fw = width;
+    
     image.src = src;
-    image.width = width;
-    image.height = height;
+    
+      $(image).each(function(){
+            var w = image.width; // 画像の幅(原寸)
+            var h = image.height; // 画像の高さ(原寸)
+            //横長の画像の場合
+            if (w >= h) {
+                iw = (fh/h*w-fw)/2
+                $(this).height(fh); //高さをサムネイルに合わせる
+                $(this).css("top",0);
+                $(this).css("left","-"+iw+"px");//画像のセンター合わせ
+            } 
+
+            //縦長の画像の場合
+            else {
+                ih = (fw/w*h-fh)/2
+                $(this).width(fw); //幅をサムネイルに合わせる
+                $(this).css("top","-"+ih+"px");//画像のセンター合わせ
+                $(this).css("left",0);
+            }
+        });
     return image;
 };
 

@@ -1,5 +1,12 @@
 #herophoto{
- position:relative;
+    display: flex;
+    position:relative;
+    align-items: center;
+        width:100vw;
+  height:100vw;
+  overflow:hidden;
+  float: left;
+  margin: 1px;
 }
 .herotitle{
 	position:absolute;
@@ -11,15 +18,19 @@
 .heroimg{
 
 }
-#photo{
+#photo .img{
 
 }
 .thumb{
-	float: left;
 	position:relative;
-	width:33%;
-
+    width:33vw;
+  height:33vw;
+  overflow:hidden;
+  float: left;
+  margin: 0;
+    padding: 0;
 }
+
 .icon{
 	position:absolute;
 	color:white;
