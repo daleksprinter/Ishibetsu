@@ -1,75 +1,75 @@
-#herophoto{
+#herophoto {
     display: flex;
-    position:relative;
-    align-items: center;
-        width:100vw;
-  height:100vw;
-  overflow:hidden;
-  float: left;
-  margin: 1px;
-}
-.herotitle{
-	position:absolute;
-	top:20%;
-	left:5%;
-	color:white;
+    position: relative;
+    width: 98vw;
+    height: 98vw;
+    overflow: hidden; //はみ出る分を隠す
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.heroimg{
-
-}
-#photo .img{
-
-}
-.thumb{
-	position:relative;
-    width:33vw;
-  height:33vw;
-  overflow:hidden;
-  float: left;
-  margin: 0;
-    padding: 0;
+.herotitle {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    color: white;
 }
 
-.icon{
-	position:absolute;
-	color:white;
-	top:3%;
-	left:70%;
-	z-index:10;
-}
 
-img{
+.thumb {
+    position: relative;
+    width: 33vw;
+    height: 33vw;
+    float: left; //左寄せで表示
+    left:0;
     margin: 0;
-	padding: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.icon {
+    position: absolute;
+    color: white;
+    top: 3%;
+    left: 70%;
+    z-index: 10;
+}
+
+img {
+    margin: 0;
+    padding: 0;
     vertical-align: bottom;
 }
-.unselected{
-background-color: Transparent;
-background-repeat:no-repeat;
-border: solid 3px transparent;
-overflow: hidden;
-margin : 3px;
-padding : 0px;
+
+.unselected {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: solid 3px transparent;
+    overflow: hidden;
+    margin: 3px;
+    padding: 0px;
 }
 
 
 
-.selected{
-background-color: Transparent;
-background-repeat:no-repeat;
-border:solid 3px #80bf01;
-overflow: hidden;
-margin : 3px;
-padding : 0px;
+.selected {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: solid 3px #80bf01;
+    overflow: hidden;
+    margin: 3px;
+    padding: 0px;
 }
 
 
 
 
-.button1{
-   position: absolute;
-    top:50px;
+.button1 {
+    position: absolute;
+    top: 50px;
     z-index: 10;
-    width:50px;
+    width: 50px;
 }

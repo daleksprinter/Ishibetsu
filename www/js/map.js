@@ -6,7 +6,9 @@ var findli_child;//サムネイル要素の数
 function spot_select(){
     //完了、キャンセルボタンを表示
  
-    $('#done')[0].style.display="inline";
+     $('#cancel')[0].style.display="inline";
+    // $('#done')[0].style.display="inline";
+
     $('#refine')[0].style.display="none";
     
     //リストの初期化。メモリの解放がされていない?
@@ -29,7 +31,7 @@ function spot_select(){
         //findLi[i].setAttribute('onclick','check(this)');
      }
      $('#icon').attr('icon','close');
-     $('#spot').attr('onClick','cancel()');
+     $('#spot').attr('onClick','done()');
 }
 
 //押下されたサムネイルの選択状態を判定
@@ -63,16 +65,13 @@ function done(){
         alert("選択されていません");
     }else{
         myNavigator.pushPage('phostone/map.html');
-  
-   　　  $('#done')[0].style.display="none";
-        $('#refine')[0].style.display="inline";
-
- $('#photo').find('ons-icon').remove();
- $('#icon').attr('icon','map-marker');
-     $('#spot').attr('onClick','spot_select()');
-
-    /*
-        for(var i = 0; i<findli_child;i++){
+        $('#done')[0].style.display = "none";
+        $('#refine')[0].style.display = "inline";
+        $('#photo').find('ons-icon').remove();
+        $('#icon').attr('icon', 'map-marker');
+        $('#spot').attr('onClick', 'spot_select()');
+        $('#cancel')[0].style.display = "none";
+        /*      for(var i = 0; i<findli_child;i++){
 
             //findLi[i].setAttribute('class','unselected');
            //findLi[i].setAttribute('onclick','load_detail(this.id)');
@@ -94,6 +93,7 @@ function cancel(){
      $('#photo').find('ons-icon').remove();
      $('#icon').attr('icon','map-marker');
      $('#spot').attr('onClick','spot_select()');
+     $('#cancel')[0].style.display="none";
 
 }
 
