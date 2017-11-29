@@ -39,13 +39,16 @@ function load_database(){
           localStorage.setItem('loaddata','true');
           console.log('loaded');
           myNavigator.pushPage('phostone/home.html');
+
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
            alert('Error : ' + errorThrown);
            $("#XMLHttpRequest").html("XMLHttpRequest : " + XMLHttpRequest.status);
            $("#textStatus").html("textStatus : " + textStatus);
            $("#errorThrown").html("errorThrown : " + errorThrown);
-        }
+
+      }
+
     })
     
 }
@@ -74,7 +77,9 @@ function insertTag(id,name,latitude,longitude,opentime,endtime,slope){
 }
 
 function delete_table(){
+
     localStorage.removeItem('loaddata');
+
     var db = openDatabase("database", "1.0", "testdatabase", 1000000);
     
     db.transaction(
