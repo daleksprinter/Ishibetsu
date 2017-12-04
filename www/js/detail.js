@@ -23,7 +23,6 @@ document.addEventListener('pageinit',function(page){
     var img = $("#image")[0];
     img.src = data.imagedata;
     img.width = screen.width;
-    img.height = screen.width;
     img.setAttribute('class','view');
     
     //テキスト表示
