@@ -1,12 +1,19 @@
 #herophoto {
     display: flex;
     position: relative;
-    width: 98vw;
-    height: 98vw;
-    overflow: hidden; //はみ出る分を隠す
+    width: 99vw; 
+    height: 99vw;
+    margin-left: 1px;
+    margin-right:1px;
+    overflow: hidden; /*はみ出る分を隠す*/
     float: left;
-    margin-left: auto;
-    margin-right: auto;
+    box-sizing: border-box;
+}
+
+#herophoto img{
+    /*画像のセンタリング（中央寄せ）*/
+    position: absolute;
+
 }
 
 .herotitle {
@@ -14,21 +21,39 @@
     top: 20%;
     left: 5%;
     color: white;
+    z-index: 5;
 }
-
 
 .thumb {
     position: relative;
     width: 33vw;
     height: 33vw;
-    float: left; //左寄せで表示
+    float: left; /*左寄せで表示*/
     left:0;
+    padding: 0px;
+    margin-top:1px;
+    margin-left:1px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+img {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
+    vertical-align: bottom;
+    overflow: hidden; /*はみ出る分を隠す*/
+
+
 }
+#photo img{
+    /*画像のセンタリング（中央寄せ）のための調整*/
+    position: absolute;
+    overflow: hidden;
+    padding: 0px;
+    }
+
+
+
 
 .icon {
     position: absolute;
@@ -37,37 +62,6 @@
     left: 70%;
     z-index: 10;
 }
-
-img {
-    margin: 0;
-    padding: 0;
-    vertical-align: bottom;
-}
-
-.unselected {
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    border: solid 3px transparent;
-    overflow: hidden;
-    margin: 3px;
-    padding: 0px;
-
-}
-
-
-
-
-.selected {
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    border: solid 3px #80bf01;
-    overflow: hidden;
-    margin: 3px;
-    padding: 0px;
-
-}
-
-
 
 
 .button1 {
