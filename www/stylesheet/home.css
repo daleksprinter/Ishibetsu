@@ -1,6 +1,8 @@
 #herophoto {
     display: flex;
     position: relative;
+    width: 98vw;
+    height: 98vw;
     overflow: hidden; //はみ出る分を隠す
     float: left;
     margin-left: auto;
