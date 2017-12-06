@@ -51,25 +51,27 @@ function img(src,width,height){
     
     image.src = src;
     
-      $(image).each(function(){
-            var image_width = image.width; // 画像の幅(原寸)
-            var image_height = image.height; // 画像の高さ(原寸)
-            //横長の画像の場合
-            if (image_width >= image_height) {
-                var centering = thum_height/image_height*(image_width-image_height)/2;
-                $(this).height(thum_height); //高さをサムネイルに合わせる
-                $(this).css("top",0);
-                $(this).css("left","-"+centering+"px");//画像のセンター合わせ
-            } 
+   
+     var image_width = image.width; // 画像の幅(原寸)
+     var image_height = image.height; // 画像の高さ(原寸)
+     console.log("w:"+image_width+" h:"+image_height);
+     //横長の画像の場合
+     if (image_width >= image_height) {
+         var centering = thum_height/image_height*(image_width-image_height)/2;
+         $(image).height(thum_height); //高さをサムネイルに合わせる
+         $(image).css("top",0);
+         $(image).css("left","-"+centering+"px");//画像のセンター合わせ
+     } 
+    
+     //縦長の画像の場合
+     else {
+         var centering = (thum_width/image_width*image_height-thum_height)/2; 
+         $(image).width(thum_width); //幅をサムネイルに合わせる
+         $(image).css("top","-"+centering+"px");//画像のセンター合わせ
+         $(image).css("left",0);
+     }
 
-            //縦長の画像の場合
-            else {
-                var centering = (thum_width/image_width*image_height-thum_height)/2; 
-                $(this).width(thum_width); //幅をサムネイルに合わせる
-                $(this).css("top","-"+centering+"px");//画像のセンター合わせ
-                $(this).css("left",0);
-            }
-        });
+    
     return image;
 };
 
