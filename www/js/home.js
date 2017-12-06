@@ -9,11 +9,15 @@ document.addEventListener('pageinit',function(page){
 
                  var hero = Math.floor( Math.random() * (l + 1) );
 
-                 var pht = img(rs.rows.item(hero).imagedata,screen.width,screen.width);
+                 var pht = document.createElement('img');
+                 pht.src = rs.rows.item(hero).imagedata;
+                 pht.width=screen.width;
 
                  pht.setAttribute('class','heroimg');
 
                  $('#herophoto')[0].appendChild(pht);
+
+
                  var time = new Date();
                  $('#herotime')[0].textContent=String(time.getFullYear()+'/'+time.getMonth()+'/'+time.getDate()+' '+conv_day(time.getDay())+'.')
                  
@@ -26,7 +30,15 @@ document.addEventListener('pageinit',function(page){
                  
                  //$('#photo')[0].appendChild(create_thumbnail(rs.rows.item(i).id,rs.rows.item(i).imagedata,(screen.width-36)/3,(screen.width-36)/3));
                  }
+                 /*
 
+                $('.thumbImg').imagefit({
+                      mode: 'inside',
+                      force : 'true',
+                      halign : 'center',
+                       valign : 'middle'
+                 });*/
+                 
              });
         });
     }
@@ -45,31 +57,43 @@ function create_thumbnail(id,src,width,height){
 
 function img(src,width,height){  
     var image = document.createElement('img');
+    image.setAttribute("class","thumbImg");
+    
 
     var thum_height = height; //サムネイルの縦幅
     var thum_width = width;  //サムネイルの横幅
     
     image.src = src;
+   // image.height = height;
     
       $(image).each(function(){
             var image_width = image.width; // 画像の幅(原寸)
             var image_height = image.height; // 画像の高さ(原寸)
             //横長の画像の場合
             if (image_width >= image_height) {
-                var centering = thum_height/image_height*(image_width-image_height)/2;
+                
+                image.height = thum_height;
+                /*var centering = thum_height/image_height*(image_width-image_height)/2;
                 $(this).height(thum_height); //高さをサムネイルに合わせる
                 $(this).css("top",0);
-                $(this).css("left","-"+centering+"px");//画像のセンター合わせ
+                $(this).css("left","-"+centering+"px");//;画像のセンター合わせ
+                */
+
+               this.style.left = -500;
             } 
 
             //縦長の画像の場合
             else {
+                    image.width = thum_width;
+                /*
                 var centering = (thum_width/image_width*image_height-thum_height)/2; 
                 $(this).width(thum_width); //幅をサムネイルに合わせる
                 $(this).css("top","-"+centering+"px");//画像のセンター合わせ
                 $(this).css("left",0);
+                */
             }
         });
+        
     return image;
 };
 
