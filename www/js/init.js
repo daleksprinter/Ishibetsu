@@ -10,9 +10,8 @@ function load_database(){
         contentType: "application/json; charset=utf-8",
        async: false,
         success:function(data,dataType){
-　　　　  var l = data.length;
-　　　  　for(var i = 0; i < l;i++){
-　　　　 　　 insertSpot(data[i].id ,data[i].title ,data[i].info ,data[i].time ,data[i].season ,data[i].imagedata ,data[i].tagid);
+　　　  　for(let d of data){
+　　　　 　　 insertSpot(d.id ,d.title ,d.info ,d.time ,d.season ,d.imagedata ,d.tagid);
 　　　  　}
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -32,12 +31,11 @@ function load_database(){
         async: false,
         success:function(data,dataType){
         
-　　　　   var l = data.length;
-　　　   　for(var i = 0; i < l;i++){
-　　　　 　　 insertTag(data[i].id ,data[i].name,data[i].latitude,data[i].longitude,data[i].opentime,data[i].endtime,data[i].slope);
+　　
+　　　   　for(let d of data){
+　　　　 　　 insertTag(d.id ,d.name,d.latitude,d.longitude,d.opentime,d.endtime,d.slope);
 　　　   　}
           localStorage.setItem('loaddata','true');
-          console.log('loaded');
           myNavigator.pushPage('phostone/home.html');
 
         },
