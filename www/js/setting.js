@@ -26,7 +26,7 @@ function refine_thumbnail(){
                var l = rs.rows.length;
                 $("#photo").empty();
                 for(var i=0;i<l;i++){
-                  $("#photo")[0].appendChild( create_thumbnail(rs.rows.item(i).id,rs.rows.item(i).imagedata,(screen.width-36)/3,(screen.width-36)/3) );
+                  $("#photo")[0].appendChild( create_thumbnail(rs.rows.item(i).id,rs.rows.item(i).imagedata,screen.width/3,screen.width/3) );
                  }
                myNavigator.popPage();
              });
@@ -65,4 +65,4 @@ function menu(){
     
     console.log('b');
   }
-};
+};y
