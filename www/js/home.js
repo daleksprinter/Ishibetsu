@@ -50,7 +50,7 @@ function img(src,width,height){
     var thum_width = width;  //サムネイルの横幅
     
     image.src = src;
-    
+    $(image).load(function(){ //画像のローディングが完了次第実行
    
      var image_width = image.width; // 画像の幅(原寸)
      var image_height = image.height; // 画像の高さ(原寸)
@@ -58,19 +58,19 @@ function img(src,width,height){
      //横長の画像の場合
      if (image_width >= image_height) {
          var centering = thum_height/image_height*(image_width-image_height)/2;
-         $(image).height(thum_height); //高さをサムネイルに合わせる
-         $(image).css("top",0);
-         $(image).css("left","-"+centering+"px");//画像のセンター合わせ
+         $(image).height(thum_height) //高さをサムネイルに合わせる
+                 .css("top",0)
+                 .css("left","-"+centering+"px");//画像のセンター合わせ
      } 
     
      //縦長の画像の場合
      else {
          var centering = (thum_width/image_width*image_height-thum_height)/2; 
-         $(image).width(thum_width); //幅をサムネイルに合わせる
-         $(image).css("top","-"+centering+"px");//画像のセンター合わせ
-         $(image).css("left",0);
+         $(image).width(thum_width) //幅をサムネイルに合わせる
+                 .css("top","-"+centering+"px")//画像のセンター合わせ
+                 .css("left",0);
      }
-
+});
     
     return image;
 };
