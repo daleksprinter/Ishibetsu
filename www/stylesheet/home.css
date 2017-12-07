@@ -11,7 +11,7 @@
 }
 
 #herophoto img{
-    /*画像のセンタリング（中央寄せ）*/
+    /*画像のセンタリング（中央寄せ）のための調整*/
     position: absolute;
 
 }
@@ -31,16 +31,12 @@
     float: left; /*左寄せで表示*/
     left:0;
     padding: 0px;
-    margin-top:1px;
-    margin-left:1px;
+    margin: 1px 0px 1px 1px;
     overflow: hidden;
     box-sizing: border-box;
 }
 
 img {
-    margin: 0;
-    padding: 0;
-    vertical-align: bottom;
     overflow: hidden; /*はみ出る分を隠す*/
 
 
@@ -51,8 +47,6 @@ img {
     overflow: hidden;
     padding: 0px;
     }
-
-
 
 
 .icon {
