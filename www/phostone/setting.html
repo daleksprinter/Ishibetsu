@@ -1,35 +1,35 @@
 <ons-page id=setting>
 <ons-toolbar>
     <div class="center">表示設定</div>
-    <div class="left"><ons-button modifier="quiet" onclick="refine_thumbnail()">Apply</ons-button></div>
+    <div class="left"><ons-button modifier="quiet" onclick="refine_thumbnail()">絞り込む</ons-button></div>
   </ons-toolbar>
  
   <ons-list>
     <ons-list-item>
       <div class="center">
-       現在営業時間外のお店を非表示
+       現在営業時間外のお店を表示
       </div>
       <div class="right">
-        <ons-switch var='open' ></ons-switch>
+        <ons-switch id='open' checked ></ons-switch>
       </div>
     </ons-list-item>
     <ons-list-item>
       <div class="center">
-        坂を登る場所を非表示
+        坂を登る場所を表示
       </div>
       <div class="right">
-        <ons-switch var='slope'></ons-switch>
+        <ons-switch id='slope' checked></ons-switch>
       </div>
     </ons-list-item>
      <ons-list-item>
       <div class="center">
-      季節、時間が異なる写真を非表示
+      季節、時間が異なる写真を表示
       </div>
       <div class="right">
-        <ons-switch var='season'></ons-switch>
+        <ons-switch id='season' checked></ons-switch>
       </div>
     </ons-list-item>
-   
+   <div id = result class = result>検索結果</div>
   </ons-list>
 
 </ons-page>
