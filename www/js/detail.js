@@ -42,7 +42,7 @@ document.getElementById('mapcanv').style.height = int_to_px(screen.width);
       });
     var marker = new google.maps.Marker({position: latlng, map: map}); 
     directionsRenderer.setMap(map);
-    //navigator.geolocation.getCurrentPosition(view_root,errorFunc,optionObj);
+    navigator.geolocation.getCurrentPosition(view_root,errorFunc,optionObj);
     
    } 
 });

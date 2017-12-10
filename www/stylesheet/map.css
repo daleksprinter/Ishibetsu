@@ -41,6 +41,13 @@ margin-top:4%;
      position:absolute;
     top: 0px;
     left :50%;
-    max-width: 
+    font-size:small;
+}
+
+.crop{
+    position:absolute;
+    width :45%;
+    height :99%;
+    overflow: hidden;
 }
 

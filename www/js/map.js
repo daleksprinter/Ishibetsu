@@ -29,7 +29,7 @@ function spot_select(){
 
         //findLi[i].setAttribute('onclick','check(this)');
      }
-     $('#icon').attr('icon','close');
+     $('#icon').attr('icon','fa-chevron-right');
 
      $('#spot').attr('onClick','done()');
 
@@ -136,7 +136,7 @@ document.addEventListener('pageinit',function(page){
 
       //カローセルが移動した時の処理
       carousel.addEventListener('postchange',function(event){
-       // navigator.geolocation.getCurrentPosition( routecalc , errorFunc , optionObj ) ;
+        navigator.geolocation.getCurrentPosition( routecalc , errorFunc , optionObj ) ;
       });
 
       //カルーセルのタッチ操作イベントが親ノードに伝達しないようにする
@@ -159,7 +159,10 @@ document.addEventListener('pageinit',function(page){
          //カルーセルアイテムにスポット情報を追加
          var card = document.createElement('div');
          card.setAttribute('id','card');
-         card.appendChild(img(list[key].imagedata,screen.height*0.1914,screen.height*0.1914));
+         var crop = document.createElement('div');
+         crop.setAttribute('class','crop');
+         crop.appendChild(img(list[key].imagedata,screen.height*0.1914,screen.height*0.1914))
+         card.appendChild(crop);
          card.appendChild(text(list[key].title,'txt'));
 
          carousel_item.setAttribute('id',key);
@@ -189,7 +192,7 @@ document.addEventListener('pageinit',function(page){
                      delete list[id];//リストからスポットデータの削除
                      this.remove();//カルーセルアイテムの削除処理
                      carousel.refresh();
-                     //navigator.geolocation.getCurrentPosition(routecalc, errorFunc , optionObj ) ;
+                     navigator.geolocation.getCurrentPosition(routecalc, errorFunc , optionObj ) ;
                 }
 
               }
@@ -208,7 +211,7 @@ document.addEventListener('pageinit',function(page){
         long = list[key].longitude;
         latlng = new google.maps.LatLng(lati,long);
 
-        var marker = new google.maps.Marker({position: latlng, map: root_map,id:key,label:{text:key}});
+        var marker = new google.maps.Marker({position: latlng, map: root_map,id:key});
         marker_list.push(marker);
 
 
@@ -221,7 +224,7 @@ document.addEventListener('pageinit',function(page){
      }
 
 　　　//カルーセルの追加を完了したあとルート探索
-   //  navigator.geolocation.getCurrentPosition(routecalc, errorFunc , optionObj );
+    navigator.geolocation.getCurrentPosition(routecalc, errorFunc , optionObj );
 
     }
 });
