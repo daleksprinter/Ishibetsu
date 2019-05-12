@@ -1,7 +1,7 @@
 
 document.addEventListener('pageinit',function(page){
    if(page.target.id == "home"){
-    console.log(getCookie('initDB'));
+    
 　　　　$("#photo").empty();//子要素の初期化
         var db = openDatabase("database", "1.0", "testdatabase", 1000000);
         db.transaction(

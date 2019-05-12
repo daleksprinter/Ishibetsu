@@ -5,10 +5,10 @@ function load_database(){
     //スポットデータの読み込み
    $.ajax({
         type:"GET",
-        url:"http://test1492.php.xdomain.jp/getspot.php",
+        url:"http://18.219.20.170:13334/spot",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-       async: false,
+        async: false,
         success:function(data,dataType){
 　　　　  var l = data.length;
 　　　  　for(var i = 0; i < l;i++){
@@ -26,7 +26,7 @@ function load_database(){
     //タグデータの読み込み
     $.ajax({
         type:"GET",
-        url:"http://test1492.php.xdomain.jp/gettag.php",
+        url:"http://18.219.20.170:13334/tag",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         async: false,

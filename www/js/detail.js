@@ -8,17 +8,19 @@ function load_detail(id){
      //スポットデータを読み込む処理。押された写真のIDと一致するタプルを検索
      db.transaction(
          function(tr){
-             tr.executeSql("SELECT * FROM Spot INNER JOIN Tag ON Spot.tagid = Tag.id WHERE Spot.id = ?",[id],function(rt,rs){
+             tr.executeSql("SELECT * FROM Spot INNER JOIN Tag ON Spot.tagid = Tag.id WHERE id = ?",[id],function(rt,rs){
+                 console.log(rs.rows.length);
                  data = rs.rows.item(0);
+                 
+                 
                  myNavigator.pushPage('phostone/detail.html');
              });
-     });
-    
+     });   
 }
-var latlng
+var latlng;
 document.addEventListener('pageinit',function(page){
    if(page.target.id == "detail"){
-       
+
     //画像表示
     var img = $("#image")[0];
     img.src = data.imagedata;
